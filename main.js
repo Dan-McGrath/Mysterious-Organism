@@ -29,8 +29,22 @@ function pAequorFactory(id, dnaStrand) {
       } else {
         this.mutate(); // if new and old dna match reruns function
       }
-
       return this.dna;
+    },
+
+    compareDna: function(pAequorObj) {
+      objDna = this.dna[0];
+      otherObjDna = pAequorObj.dna[0];
+      count = 0
+      for (let i = 0; i < objDna.length; i++) {
+        if (objDna[i] === otherObjDna[i]) {
+          count += 1;
+        }
+      }
+
+      percentMatch = Math.floor((count / 15) * 100);
+      return `specimen #${this.specimenNum} and specimen #${pAequorObj.specimenNum} have ${percentMatch}% DNA in common`
+
     }
 
   }
@@ -38,6 +52,10 @@ function pAequorFactory(id, dnaStrand) {
 
 
 test = pAequorFactory(1, mockUpStrand());
+test2 = pAequorFactory(2, mockUpStrand());
+
+
+
 
 
 
