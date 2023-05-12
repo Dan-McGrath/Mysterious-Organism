@@ -45,6 +45,23 @@ function pAequorFactory(id, dnaStrand) {
       percentMatch = Math.floor((count / 15) * 100);
       return `specimen #${this.specimenNum} and specimen #${pAequorObj.specimenNum} have ${percentMatch}% DNA in common`
 
+    },
+
+    willLikelySurvive: function() {
+      count = 0;
+      for (let i = 0; i < this.dna[0].length; i++) {
+        if (this.dna[0][i] === 'C' || this.dna[0][i] === 'G') {
+          count += 1;
+        }
+      }
+
+      chanceOfSurvival = Math.floor((count / 15) * 100);
+      console.log(chanceOfSurvival);
+      if (chanceOfSurvival >= 60) {
+        return true;
+      }
+      return false;
+      
     }
 
   }
@@ -54,6 +71,11 @@ function pAequorFactory(id, dnaStrand) {
 test = pAequorFactory(1, mockUpStrand());
 test2 = pAequorFactory(2, mockUpStrand());
 
+
+console.log(test.dna[0]);
+console.log(test2.dna[0]);
+console.log(test.willLikelySurvive());
+console.log(test2.willLikelySurvive());
 
 
 
