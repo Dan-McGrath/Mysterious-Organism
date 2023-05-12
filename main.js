@@ -56,26 +56,36 @@ function pAequorFactory(id, dnaStrand) {
       }
 
       chanceOfSurvival = Math.floor((count / 15) * 100);
-      console.log(chanceOfSurvival);
       if (chanceOfSurvival >= 60) {
         return true;
       }
       return false;
-      
     }
-
   }
 }
 
+let studyArray = [];
 
-test = pAequorFactory(1, mockUpStrand());
-test2 = pAequorFactory(2, mockUpStrand());
+let i = 1
+while (studyArray.length < 30) {
+  possibleSubject = pAequorFactory(i, mockUpStrand());
+  if (possibleSubject.willLikelySurvive() === true) {
+    studyArray.push(possibleSubject);
+    
+  }
+  i++;
+}
+
+console.log(studyArray);
+
+// test = pAequorFactory(1, mockUpStrand());
+// test2 = pAequorFactory(2, mockUpStrand());
 
 
-console.log(test.dna[0]);
-console.log(test2.dna[0]);
-console.log(test.willLikelySurvive());
-console.log(test2.willLikelySurvive());
+// console.log(test.dna[0]);
+// console.log(test2.dna[0]);
+// console.log(test.willLikelySurvive());
+// console.log(test2.willLikelySurvive());
 
 
 
