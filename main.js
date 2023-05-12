@@ -66,15 +66,19 @@ function pAequorFactory(id, dnaStrand) {
 
 let studyArray = [];
 
-let i = 1
-while (studyArray.length < 30) {
-  possibleSubject = pAequorFactory(i, mockUpStrand());
-  if (possibleSubject.willLikelySurvive() === true) {
-    studyArray.push(possibleSubject);
-    
+function studyArrayHelper(arraySize) {
+  let i = 1;
+  while (studyArray.length < arraySize) {
+    possibleSubject = pAequorFactory(i, mockUpStrand());
+    if (possibleSubject.willLikelySurvive() === true) {
+      studyArray.push(possibleSubject);
+    }
+    i++;
   }
-  i++;
-}
+};
+
+
+studyArrayHelper(30);
 
 console.log(studyArray);
 
